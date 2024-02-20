@@ -1,0 +1,8 @@
+write a sql to get all the orders where customers name has "a" as second character and "d" as fourth character
+
+select * from Orders
+where customer_name like '_a%' and customer_name like '___d%'
+
+OR
+
+select * from Orders where customer_name like '_a_d%'
