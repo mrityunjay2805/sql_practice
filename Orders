@@ -66,3 +66,26 @@ Or we can
 select * from Orders where DATEPART(YEAR, order_date) = '2020' and
 DATEPART(YEAR, ship_date) = '2021'
 
+
+11) write a update statement to update city as null for order ids :  CA-2020-161389 , US-2021-156909
+
+update orders set city=null where order_id in ('CA-2020-161389','US-2021-156909')
+
+
+12) write a query to find orders where city is null
+
+select * from orders where city is null
+
+
+13) write a query to get total profit, first order date and latest order date for each category
+
+select sum(sales) as Total_profit, min(order_date) as first_order_date, max(order_date) as latest_ordr_date
+from Orders group by category
+
+
+14) write a query to find sub-categories where average profit is more than the half of the max profit 
+in that sub-category
+
+select sub_category from Orders group by sub_category having avg(profit) > 0.5 * Max(profit)
+
+
