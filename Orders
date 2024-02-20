@@ -19,3 +19,13 @@ Select * from Orders where order_date between '2020-12-01' and '2020-12-31'
 after nov 2020
 
 select * from Orders where ship_mode not in ('Standard Class', 'First Class') and ship_date > '2020-11-30'
+
+
+4) write a query to get all the orders where customer name neither start with "A" and nor ends with "n"
+
+Select * from Orders where customer_name not like 'A%n'
+
+
+5) write a query to get all the orders where profit is negative
+
+Select * from Orders where customer_name not like 'A%n'
