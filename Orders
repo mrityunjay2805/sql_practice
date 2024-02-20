@@ -3,5 +3,13 @@
 select * from Orders
 where customer_name like '_a%' and customer_name like '___d%'
 
-OR
+OR w can
 select * from Orders where customer_name like '_a_d%'
+
+
+2) write a sql to get all the orders placed in the month of dec 2020
+
+Select * from Orders where DATEPART(YEAR, order_date) = '2020' and DATEPART(MONTH, order_date) = '12'
+
+Or we can
+Select * from Orders where order_date between '2020-12-01' and '2020-12-31'
