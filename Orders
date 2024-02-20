@@ -1,5 +1,6 @@
 Use https://github.com/mrityunjay2805/sql_practice/blob/main/Superstore_orders.xls
 Use https://github.com/mrityunjay2805/sql_practice/blob/main/returns.xls
+Order_id is the foreign key
 
 
 1) write a sql to get all the orders where customers name has "a" as second character and "d" as fourth character
