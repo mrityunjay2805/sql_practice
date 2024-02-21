@@ -167,3 +167,11 @@ Orders o left join returns$ r on o.order_id = r.[Order Id]
 where DATEPART(MONTH, order_date) = 11
 group by sub_category 
 having count(r.[Order Id]) = 0
+
+
+24) orders table can have multiple rows for a particular order_id when customers buys more than 1 product in an order.
+write a query to find order ids where there is only 1 product bought by the customer.
+
+select order_id from Orders
+group by order_id
+having COUNT(*) = 1
