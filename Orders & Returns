@@ -139,3 +139,15 @@ from Orders o inner join returns$ r on o.order_id = r.[Order Id]
 group by o.sub_category
 having count(distinct r.[Return Reason]) = 3
 
+
+
+21) write a query to find cities where not even a single order was returned.
+
+select distinct city
+from Orders o
+left join returns$ r on o.order_id=r.[Order Id]
+group by city
+having count(r.[Order Id])=0
+
+
+22) write a query to find top 3 subcategories by sales of returned orders in east region
