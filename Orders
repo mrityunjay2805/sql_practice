@@ -117,4 +117,19 @@ where order_date between '2020-01-01' and '2020-12-31'
 group by region,ship_mode
 
 
+18) write a query to get region wise count of return orders
+
+select region, count(distinct o.order_id) as no_of_return_order
+from Orders o inner join returns$ r on o.order_id = r.[Order Id]
+group by region
+
+
+19) write a query to get category wise sales of orders that were not returned
+
+select category, sum(sales) as total_sales
+from Orders o left join returns$ r on o.order_id = r.[Order Id]
+where r.[Order Id] is null
+group by category
+
+
 
