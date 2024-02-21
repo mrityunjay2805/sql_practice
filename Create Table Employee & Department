@@ -21,6 +21,12 @@ insert into employee values(10,'Rakesh',500,7000,6,50);
 select * from employee;
 
 
+Run the following command to add and update dob column in employee table:
+
+alter table  employee add dob date;
+update employee set dob = dateadd(year,-1*emp_age,getdate())
+
+
 
 create table dept(
     dep_id int,
