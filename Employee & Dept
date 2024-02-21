@@ -1,1 +1,4 @@
+1) write a query to print dep name and average salary of employees in that dep .
 
+select d.dep_name, avg(salary) from employee e inner join dept d on e.dept_id = d.dep_id
+group by d.dep_name
