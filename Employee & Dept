@@ -9,3 +9,13 @@ group by d.dep_name
 select d.dep_name from employee e inner join dept d on e.dept_id = d.dep_id
 group by d.dep_name
 having count(distinct e.emp_id) = count(distinct e.salary)
+
+
+3) write a query to print dep name for which there is no employee
+
+select d.dep_name from dept d left join employee e on d.dep_id = e.dept_id
+group by dep_name
+having count(e.emp_id)= 0
+
+
+4) write a query to print employees name for which dep id is not avaiable in dept table
