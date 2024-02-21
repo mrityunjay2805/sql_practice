@@ -132,4 +132,10 @@ where r.[Order Id] is null
 group by category
 
 
+20) write a query to print sub categories where we have all 3 kinds of returns (others,bad quality,wrong items)
+
+select o.sub_category
+from Orders o inner join returns$ r on o.order_id = r.[Order Id]
+group by o.sub_category
+having count(distinct r.[Return Reason]) = 3
 
