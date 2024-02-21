@@ -158,3 +158,12 @@ on o.order_id = r.[Order Id]
 where region = 'East'
 group by sub_category
 order by sales_from_returned_orders desc
+
+
+23) write a query to find subcategories who never had any return orders in the month of november (irrespective of years)
+
+select sub_category from
+Orders o left join returns$ r on o.order_id = r.[Order Id]
+where DATEPART(MONTH, order_date) = 11
+group by sub_category 
+having count(r.[Order Id]) = 0
