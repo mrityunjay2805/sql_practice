@@ -151,3 +151,10 @@ having count(r.[Order Id])=0
 
 
 22) write a query to find top 3 subcategories by sales of returned orders in east region
+
+select top 3 sub_category, sum(sales) as sales_from_returned_orders
+from Orders o inner join returns$ r 
+on o.order_id = r.[Order Id]
+where region = 'East'
+group by sub_category
+order by sales_from_returned_orders desc
