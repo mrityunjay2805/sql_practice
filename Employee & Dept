@@ -19,3 +19,7 @@ having count(e.emp_id)= 0
 
 
 4) write a query to print employees name for which dep id is not avaiable in dept table
+
+select e.dept_id
+from employee e left join dept d on e.dept_id = d.dep_id
+where d.dep_id is null
