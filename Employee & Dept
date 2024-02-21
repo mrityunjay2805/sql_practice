@@ -23,3 +23,12 @@ having count(e.emp_id)= 0
 select e.dept_id
 from employee e left join dept d on e.dept_id = d.dep_id
 where d.dep_id is null
+
+
+5) write a query to print emp name , their manager name and diffrence in their age (in days) 
+for employees whose year of birth is before their managers year of birth
+
+select e1.emp_name as emp_name ,e2.emp_name as manager_name, DATEDIFF(DAY, e1.dob,e2.dob) as diff_in_age
+from employee e1 inner join employee e2
+on e1.manager_id = e2.emp_id
+where DATEPART(Year, e2.dob) > DATEPART(Year, e1.dob)
