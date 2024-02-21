@@ -175,3 +175,9 @@ write a query to find order ids where there is only 1 product bought by the cust
 select order_id from Orders
 group by order_id
 having COUNT(*) = 1
+
+
+25) write a query to get number of business days between order_date and ship_date (exclude weekends). 
+Assume that all order date and ship date are on weekdays only
+
+
