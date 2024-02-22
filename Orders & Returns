@@ -200,3 +200,11 @@ select category, sum(case when DATEPART(YEAR, order_date)= 2019 then sales end) 
 sum(case when DATEPART(YEAR, order_date)=2020 then sales end)as total_sales_2020
 from Orders
 group by category
+
+
+28) write a query print top 5 cities in west region by average no of days between order date and ship date.
+
+select top 5 city, Avg(DATEDIFF(DAY, order_date, ship_date)) as avg_days
+from Orders where region = 'West'
+group by city
+order by avg_days desc
