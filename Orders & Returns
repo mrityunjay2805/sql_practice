@@ -191,3 +191,12 @@ from Orders
 select category, sum(sales) as total_sales, sum(case when r.[Order Id] is not null then sales end) as return_order_sales
 from Orders o left join returns$ r on o.order_id = r.[Order Id]
 group by category
+
+
+27) write a query to print below 3 columns
+category, total_sales_2019(sales in year 2019), total_sales_2020(sales in year 2020)
+
+select category, sum(case when DATEPART(YEAR, order_date)= 2019 then sales end) as total_sales_2019,
+sum(case when DATEPART(YEAR, order_date)=2020 then sales end)as total_sales_2020
+from Orders
+group by category
