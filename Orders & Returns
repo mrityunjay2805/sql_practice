@@ -185,3 +185,9 @@ select  order_id, order_date, ship_date,
 DATEDIFF(day, order_date, ship_date) - 2* DATEDIFF(WEEK, order_date, ship_date) as no_of_business_days
 from Orders
 
+
+26) write a query to print 3 columns : category, total_sales and (total sales of returned orders)
+
+select category, sum(sales) as total_sales, sum(case when r.[Order Id] is not null then sales end) as return_order_sales
+from Orders o left join returns$ r on o.order_id = r.[Order Id]
+group by category
