@@ -181,3 +181,7 @@ having COUNT(*) = 1
 Assume that all order date and ship date are on weekdays only
 
 
+select  order_id, order_date, ship_date, 
+DATEDIFF(day, order_date, ship_date) - 2* DATEDIFF(WEEK, order_date, ship_date) as no_of_business_days
+from Orders
+
