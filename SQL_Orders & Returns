@@ -223,3 +223,32 @@ customer_name , count_of_occurence_of_n
 
 select customer_name, len(customer_name) - Len(REPLACE(lower(customer_name), 'n', '')) as new
 from Orders
+
+
+31) write a query to print below output from orders data. example output
+hierarchy type,hierarchy name ,total_sales_in_west_region,total_sales_in_east_region
+category , Technology, ,
+category, Furniture, ,
+category, Office Supplies, ,
+sub_category, Art , ,
+sub_category, Furnishings, ,
+--and so on all the category ,subcategory and ship_mode hierarchies 
+
+
+select 'category' as heirarchy_type, category as heirarchy_name, 
+sum(case when region = 'West' then sales end) as total_sales_west_region,
+sum(case when region = 'East' then sales end) as total_sales_east_region
+from Orders
+group by category
+Union all
+select 'sub_category' as heirarchy_type, sub_category as heirarchy_name,
+sum(case when region = 'West' then sales end) as total_sales_west_region,
+sum(case when region = 'East' then sales end) as total_sales_east_region
+from Orders
+group by sub_category
+union all
+select 'ship_mode'as heirarchy_type, ship_mode as heirarchy_name,
+sum(case when region = 'West' then sales end) as total_sales_west_region,
+sum(case when region = 'East' then sales end) as total_sales_east_region
+from Orders
+group by ship_mode
