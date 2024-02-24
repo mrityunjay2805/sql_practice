@@ -1,3 +1,5 @@
+For Table: https://github.com/mrityunjay2805/sql_practice/blob/main/Create%20Table%20Employee%20%26%20Department
+
 1) write a query to print dep name and average salary of employees in that dep .
 
 select d.dep_name, avg(salary) from employee e inner join dept d on e.dept_id = d.dep_id
