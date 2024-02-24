@@ -1,2 +1,4 @@
+For Table: https://github.com/mrityunjay2805/sql_practice/blob/main/Create%20Table%20icc_world_cup
+
 1) write a query to produce below output from icc_world_cup table. 
 team_name, no_of_matches_played , no_of_wins , no_of_losses
