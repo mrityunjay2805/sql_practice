@@ -1,3 +1,5 @@
+For Table : https://github.com/mrityunjay2805/sql_practice/blob/main/Create%20Table%20Drivers
+
 1)  write a query to print below output using drivers table. Profit rides are the no of rides where end location of a ride is same as start location of immediate next ride for a driver
 id, total_rides , profit_rides
 dri_1,5,1
