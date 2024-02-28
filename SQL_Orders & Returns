@@ -273,3 +273,13 @@ select avg(order_sales) from
 from Orders 
 group by order_id) as orders_agg
 
+
+
+34) To find all the orders whose sales is greater that avg order value.
+
+
+select order_id from Orders group by order_id having sum(sales) >
+(select avg(order_sales) as avg_order_value from 
+(select order_id, sum(sales) as order_sales 
+from Orders 
+group by order_id) as orders_agg)
