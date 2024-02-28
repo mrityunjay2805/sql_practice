@@ -283,3 +283,18 @@ select order_id from Orders group by order_id having sum(sales) >
 (select order_id, sum(sales) as order_sales 
 from Orders 
 group by order_id) as orders_agg)
+
+Or we can 
+
+
+select A.*, B.*
+from
+(select order_id, sum(sales) as order_sales
+from Orders
+group by order_id) A
+inner join
+(Select avg(orders_aggregated.order_sales) as avg_order_value from
+(select order_id, sum(sales) as order_sales
+from Orders
+group by order_id) as orders_aggregated) B
+on 1=1 where order_sales > avg_order_value
