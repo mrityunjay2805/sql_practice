@@ -56,3 +56,29 @@ inner join employee e3 on e2.manager_id = e3.emp_id
 
 Select dep_id from dept where dep_id not in 
 (Select dept_id from employee)
+
+
+
+9) Write a query to display emp_id, emp_name, dept_id, salary of that person and avg salary of the dept to 
+which the emp belongs to.
+
+
+select e.*, d.* from employee e
+inner join
+(select dept_id, avg(salary) as avg_dep_sal from employee
+group by dept_id) d 
+on e.dept_id = d.dept_id
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
