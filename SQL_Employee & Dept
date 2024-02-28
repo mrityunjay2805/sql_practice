@@ -49,3 +49,10 @@ group by e2.emp_name
 select e1.emp_name as emp_name, e2.emp_name as mananger_name, e3.emp_name as senior_manager
 from employee e1 inner join employee e2 on e1.manager_id = e2.emp_id
 inner join employee e3 on e2.manager_id = e3.emp_id
+
+
+8) Write departmet id which are not present in employee table but present in Dept table
+
+
+Select dep_id from dept where dep_id not in 
+(Select dept_id from employee)
