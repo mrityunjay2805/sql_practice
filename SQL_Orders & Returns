@@ -263,3 +263,13 @@ group by ship_mode
 select SUBSTRING(order_id,1,2) , count(distinct order_id)as country from Orders
 group by SUBSTRING(order_id,1,2)
 
+
+
+33) Find the average order value.
+
+
+select avg(order_sales) from 
+(select order_id, sum(sales) as order_sales 
+from Orders 
+group by order_id) as orders_agg
+
