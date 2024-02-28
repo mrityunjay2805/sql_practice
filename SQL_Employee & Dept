@@ -70,6 +70,17 @@ group by dept_id) d
 on e.dept_id = d.dept_id
 
 
+Or we can use CTE (Commonn Table Expression)
+
+With dep as 
+(select dept_id, avg(salary) as avg_dep_sal from employee
+group by dept_id)
+select e.*, d.* from employee e
+inner join dep d 
+on e.dept_id = d.dept_id;
+
+
+
 
 
 
