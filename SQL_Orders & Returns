@@ -298,3 +298,21 @@ inner join
 from Orders
 group by order_id) as orders_aggregated) B
 on 1=1 where order_sales > avg_order_value
+
+
+
+or we can use CTE
+
+
+With order_wise_sales as
+(select order_id, sum(sales) as order_sales from Orders group by order_id)
+
+,B as (select avg(orders_aggregated.order_sales) as avg_order_value from order_wise_sales as orders_aggregated)
+
+select A.*, B.*
+from
+order_wise_sales A
+inner join B
+on 1 = 1
+where order_sales > avg_order_value
+
