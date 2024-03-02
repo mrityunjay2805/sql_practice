@@ -101,7 +101,10 @@ select * from employee e1 inner join (select dept_id, max(salary) as max_sal fro
 on e1.dept_id = d1.dept_id where e1.salary = max_sal
 
 
- 
+ 13) write a query to print emp name, salary and dep id of highest salaried employee overall
+
+select * from employee 
+where salary = (select max(salary) from employee)
 
 
 
