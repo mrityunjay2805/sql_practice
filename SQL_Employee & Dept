@@ -81,6 +81,15 @@ on e.dept_id = d.dept_id;
 
 
 
+10) write a query to find employees whose salary is more than average salary of employees in their department
+
+select * from employee e
+inner join (select dept_id,avg(salary) as avg_sal from employee group by dept_id)  d
+on e.dept_id=d.dept_id
+where salary>avg_sal
+
+
+
 
 
 
