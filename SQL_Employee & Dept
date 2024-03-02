@@ -95,9 +95,10 @@ where salary>avg_sal
 select * from employee where emp_age > (select avg(emp_age) from employee)
 
 
+12) write a query to print emp name, salary and dep id of highest salaried employee in each department 
 
-
-
+select * from employee e1 inner join (select dept_id, max(salary) as max_sal from employee group by dept_id) as d1
+on e1.dept_id = d1.dept_id where e1.salary = max_sal
 
 
  
