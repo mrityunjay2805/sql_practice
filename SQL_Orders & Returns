@@ -316,3 +316,15 @@ inner join B
 on 1 = 1
 where order_sales > avg_order_value
 
+
+
+35) write a query to find premium customers from orders data. 
+Premium customers are those who have done more orders than average no of orders per customer.
+
+
+with avg_no_of_orders as (
+select customer_id , count(distinct order_id) as no_of_orders from Orders
+group by customer_id
+)
+select * from avg_no_of_orders where no_of_orders> (select avg(no_of_orders) from avg_no_of_orders)
+
