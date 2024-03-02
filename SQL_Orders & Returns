@@ -328,3 +328,19 @@ group by customer_id
 )
 select * from avg_no_of_orders where no_of_orders> (select avg(no_of_orders) from avg_no_of_orders)
 
+
+
+36) write a query to print product id and total sales of highest selling products (by no of units sold) in each category
+
+with product_quantity as (
+select category,product_id,sum(quantity) as total_quantity
+from Orders 
+group by category,product_id)
+,cat_max_quantity as (
+select category,max(total_quantity) as max_quantity from product_quantity 
+group by category
+)
+select *
+from product_quantity pq
+inner join cat_max_quantity cmq on pq.category=cmq.category
+where pq.total_quantity  = cmq.max_quantity
