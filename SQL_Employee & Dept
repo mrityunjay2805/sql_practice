@@ -89,6 +89,13 @@ on e.dept_id=d.dept_id
 where salary>avg_sal
 
 
+11) write a query to find employees whose age is more than average age of all the employees.
+
+
+select * from employee where emp_age > (select avg(emp_age) from employee)
+
+
+
 
 
 
