@@ -117,6 +117,16 @@ select *, ROW_NUMBER() over(order by salary desc) as rn
 from employee
 
 
+select * , ROW_NUMBER() over (partition by dept_id order by salary desc) as rn,
+rank() over (partition by dept_id order by salary desc) as rnk
+from employee
+
+Select *, ROW_NUMBER() over (partition by dept_id order by salary desc) as rn,
+rank() over (partition by dept_id order by salary desc) as rnk,
+ROW_NUMBER() over (partition by dept_id, salary order by salary desc) as rnk
+from employee
+
+*******************************************************************************************
 14) Find top 2 highest salaried employee from each department.
 
 Select * from (
