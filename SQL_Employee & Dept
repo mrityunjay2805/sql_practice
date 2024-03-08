@@ -132,6 +132,12 @@ DENSE_RANK() over (partition by dept_id order by salary desc) as d_rnk
 from employee
 
 
+Select *, ROW_NUMBER() over (partition by dept_id order by salary desc) as rn,
+rank() over (order by salary desc) as rnk,
+DENSE_RANK() over (order by salary desc) as d_rnk
+from employee
+
+
 
 *******************************************************************************************
 14) Find top 2 highest salaried employee from each department.
