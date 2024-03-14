@@ -362,3 +362,13 @@ from category_prod_sales
 )
 select * from rank_sales where rn<=5
 
+or we can
+
+with cte as 
+(
+select category, product_id, rank() over (partition by category order by sum(sales) desc) as rn
+from Orders
+group by category, product_id )
+select * from cte where rn <=5
+
+
