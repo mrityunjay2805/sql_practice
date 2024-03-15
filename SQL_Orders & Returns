@@ -421,3 +421,18 @@ where order_year='2020'
 )
 select * from rnk where rn<=3
 
+
+40) Among all the sub categories..which sub category had highest month over month growth by sales in Jan 2020.
+
+
+with sbc_sales as (
+select sub_category,format(order_date,'yyyyMM') as year_month, sum(sales) as sales
+from Orders
+group by sub_category,format(order_date,'yyyyMM')
+)
+, prev_month_sales as (select *,lag(sales) over(partition by sub_category order by year_month) as prev_sales
+from sbc_sales)
+select  top 1 * , (sales-prev_sales)/prev_sales as mom_growth
+from prev_month_sales
+where year_month='202001'
+order by mom_growth desc
