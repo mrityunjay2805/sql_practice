@@ -156,6 +156,22 @@ from employee )
 select * from cte where rn <=2
 
 
+15) write a query to print 3rd highest salaried employee details for each department 
+(give preferece to younger employee in case of a tie). 
+In case a department has less than 3 employees then print the details of highest salaried employee in that department.
+
+
+with rnk as (
+select *, dense_rank() over(partition by dept_id order by salary desc) as rn
+,count(1) over(partition by dept_id ) as no_of_emp
+from employee)
+select
+*
+from 
+rnk 
+where rn=3 or  (no_of_emp<3 and rn=1) 
+
+
 
 
 
