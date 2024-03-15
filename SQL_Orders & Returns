@@ -372,3 +372,36 @@ group by category, product_id )
 select * from cte where rn <=5
 
 
+
+38)  write a query to find top 3 and bottom 3 products by sales in each region
+
+with region_sales as (
+select region,product_id,sum(sales) as sales
+from orders
+group by region,product_id
+)
+,rnk as (select *, rank() over(partition by region order by sales desc) as drn
+, rank() over(partition by region order by sales asc) as arn
+from region_sales
+)
+select region,product_id,sales,case when drn <=3 then 'Top 3' else 'Bottom 3' end as top_bottom
+from rnk
+where drn <=3 or arn<=3
+
+
+------------To Understand -------------------
+
+with prod_sales as 
+(
+select region, product_id, sum (sales) as total_sales from Orders group by region, product_id
+)
+, new_cte as 
+(
+select *, rank() over (partition by region order by total_sales desc) as rnk,
+rank() over (partition by region order by total_sales asc) as arnk
+from prod_sales
+)
+select * , case when rnk <=3 then 'top3' else 'Bottom3' end as top_bottom from new_cte where rnk <=3 or arnk <=3 
+
+
+
