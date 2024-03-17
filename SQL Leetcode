@@ -67,7 +67,18 @@ Explanation: The average experience years for the first project is (3 + 2 + 1) /
 
 solution:
 
-Select project_id, Round((sum(experience_years)+ 0.00)/count(*),2) as average_years
-from Project p left join employee e
-on p.employee_id = e.employee_id
-group by project_id
+WITH T1 AS
+(
+SELECT project_id, e.employee_id,experience_years FROM Project P
+LEFT JOIN Employee E ON p.employee_id=e.employee_id
+)
+SELECT T1.project_id, ROUND(AVG(experience_years*1.0),2) AS average_years FROM T1
+GROUP BY T1.project_id;
+
+or 
+
+
+SELECT project_id,ROUND(AVG(experience_years*1.0),2) AS average_years FROM Project P
+LEFT JOIN Employee E ON
+P.employee_id=E.employee_id
+GROUP BY project_id;
