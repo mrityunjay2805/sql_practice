@@ -116,6 +116,11 @@ from Orders
 where order_date between '2020-01-01' and '2020-12-31'
 group by region,ship_mode
 
+or we can
+
+select region, ship_mode, sum(sales) as total_sales from orders$ 
+where DATEPART(YEAR,order_date) = '2020' group by region, ship_mode
+
 
 18) write a query to get region wise count of return orders
 
