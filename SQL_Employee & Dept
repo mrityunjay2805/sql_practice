@@ -19,6 +19,27 @@ select d.dep_name from dept d left join employee e on d.dep_id = e.dept_id
 group by dep_name
 having count(e.emp_id)= 0
 
+/*
+# Learning
+
+The COUNT() function returns the number of rows that matches a specified criterion.
+You can specify a column name instead of the asterix symbol (*).
+If you specify a column name instead of (*), NULL values will not be counted.
+
+create table fun
+(Emp_id integer)
+
+insert into fun values(1), (2), (null), (3), (null),(4), (5)
+
+select * from fun
+
+select count(*) from fun
+select count(Emp_id) from fun
+
+*/
+
+
+
 
 4) write a query to print employees name for which dep id is not avaiable in dept table
 
