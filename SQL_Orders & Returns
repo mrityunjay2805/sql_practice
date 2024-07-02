@@ -128,6 +128,11 @@ select region, count(distinct o.order_id) as no_of_return_order
 from Orders o inner join returns$ r on o.order_id = r.[Order Id]
 group by region
 
+or
+
+select region, count(distinct r.[Order Id]) from returns$ r left join orders$ o on r.[Order Id] = o.order_id
+group by region
+
 
 19) write a query to get category wise sales of orders that were not returned
 
