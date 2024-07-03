@@ -47,10 +47,6 @@ select e.dept_id
 from employee e left join dept d on e.dept_id = d.dep_id
 where d.dep_id is null
 
-or 
-
-select dep_id from dept where dep_id not in (select dept_id from employee)
-
 
 
 5) write a query to print emp name , their manager name and diffrence in their age (in days) 
