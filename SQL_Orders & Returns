@@ -346,6 +346,19 @@ group by customer_id
 select * from avg_no_of_orders where no_of_orders> (select avg(no_of_orders) from avg_no_of_orders)
 
 
+or we can
+
+with cte as
+(select customer_id, count(distinct order_id) as total_orders_per_id from orders$ group by customer_id)
+, avg_count as 
+(select avg(total_orders_per_id) as count_orders from cte )
+
+select c.*, a.*  from cte c inner join avg_count a on 1=1
+where total_orders_per_id > count_orders
+
+
+
+
 
 36) write a query to print product id and total sales of highest selling products (by no of units sold) in each category
 
