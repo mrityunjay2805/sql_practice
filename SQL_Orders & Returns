@@ -357,6 +357,26 @@ select c.*, a.*  from cte c inner join avg_count a on 1=1
 where total_orders_per_id > count_orders
 
 
+or we can
+
+
+select * 
+from (
+    select customer_id, count(distinct order_id) as no_of_orders 
+    from Orders 
+    group by customer_id
+) avg_no_of_orders 
+where no_of_orders > (
+    select avg(no_of_orders) 
+    from (
+        select customer_id, count(distinct order_id) as no_of_orders 
+        from Orders 
+        group by customer_id
+    ) as subquery
+)
+
+
+
 
 
 
