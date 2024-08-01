@@ -191,16 +191,15 @@ select * from cte where rn <=2
 In case a department has less than 3 employees then print the details of highest salaried employee in that department.
 
 
-with rnk as (
-select *, dense_rank() over(partition by dept_id order by salary desc) as rn
-,count(1) over(partition by dept_id ) as no_of_emp
+with cte as
+(Select *, 
+DENSE_RANK()over(partition by dept_id order by salary desc, emp_age asc) as d_rnk
 from employee)
-select
-*
-from 
-rnk 
-where rn=3 or  (no_of_emp<3 and rn=1) 
-
+, count_emp as 
+(Select dept_id, count(*) as tot_emp from employee group by dept_id)
+ 
+Select * from cte A inner join count_emp B on A.dept_id = B.dept_id
+where d_rnk = 3 or (tot_emp <3 and d_rnk = 1)
 
 
 
