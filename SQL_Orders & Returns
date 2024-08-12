@@ -94,6 +94,16 @@ in that sub-category
 
 select sub_category from Orders group by sub_category having avg(profit) > 0.5 * Max(profit)
 
+--or we can
+
+
+Select * from 
+(Select sub_category, avg(profit) as avg_profit from orders$
+group by sub_category) A
+ inner join
+(Select sub_category , 0.5*max(profit) as profit from orders$ group by sub_category) B
+on A.sub_category = B.sub_category where avg_profit > profit
+
 
 15) write a query to find total number of products in each category
 
